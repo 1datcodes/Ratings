@@ -53,6 +53,8 @@ const ClassDetail = () => {
     const handleCommentSubmit = async () => {
         try {
             const response = await axios.post('/comments', { content: comment, class_id: id });
+            setComments([...comments, response.data]);
+            setComment('');
             setComments([...comments, { content: comment, user: 'You' }]);
             setComment('');
         } catch (error) {
